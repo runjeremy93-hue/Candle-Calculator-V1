@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Candle Calculator</title>
+</head>
+<body>
+  <h1>Candle Calculator</h1>
+
+  <label>Jar Size (oz):</label>
+  <input id="jar" type="number"><br><br>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <h2 id="result"></h2>
+
+  <script>
+    function calculate() {
+      let jar = document.getElementById("jar").value;
+      let wax = jar * 0.92;
+      let fragrance = jar * 0.08;
+
+      document.getElementById("result").innerText =
+        "Wax: " + wax.toFixed(2) + " oz | Fragrance: " + fragrance.toFixed(2) + " oz";
+    }
+  </script>
+</body>
+</html>
