@@ -6,60 +6,70 @@
   <title>Candle Calculator</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-     background: linear-gradient(135deg, #1a1410, #2c2218);
-      color: #f5efe6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+   body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f5efe6, #e9dfd1);
+  color: #3a2f25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-    .card {
-      width: 400px;
-      padding: 25px;
-      border-radius: 15px;
-      background: #1f1b18;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
+/* Main card */
+.card {
+  width: 400px;
+  padding: 25px;
+  border-radius: 20px;
+  background: #fffaf3;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
 
-    h1 {
-      text-align: center;
-    }
+/* Title */
+h1 {
+  text-align: center;
+  color: #3a2f25;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-    }
+/* Labels */
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
 
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: none;
-    }
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #ddd2c4;
+  background: #fff;
+}
 
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: #d4a75c;
-      font-weight: bold;
-      cursor: pointer;
-    }
+/* Button */
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #c89b3c, #e0b15b);
+  color: #2b2118;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .results {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      background: #2a2521;
-      display: none;
-    }
+/* Results */
+.results {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f7efe5;
+  display: none;
+}    }
   </style>
 </head>
 
