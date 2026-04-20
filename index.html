@@ -1,26 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Candle Calculator</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #111, #1e1a17);
+      color: #f5efe6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 400px;
+      padding: 25px;
+      border-radius: 15px;
+      background: #1f1b18;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #d4a75c;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .results {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #2a2521;
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Candle Calculator</h1>
+  <div class="card">
+    <h1>Candle Calculator</h1>
 
-  <label>Jar Size (oz):</label>
-  <input id="jar" type="number"><br><br>
+    <label>Vessel Size (oz)</label>
+    <input id="vessel" type="number" placeholder="8">
 
-  <button onclick="calculate()">Calculate</button>
+    <label>Number of Candles or Melts</label>
+    <input id="count" type="number" placeholder="12">
 
-  <h2 id="result"></h2>
+    <label>Fragrance Strength</label>
+    <select id="load">
+      <option value="">Select strength</option>
+      <option value="6">Light (6%)</option>
+      <option value="8">Medium (8%)</option>
+      <option value="10">Strong (10%)</option>
+      <option value="12">Overload (Wax Melts) (12%)</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="results" id="results"></div>
+  </div>
 
   <script>
     function calculate() {
-      let jar = document.getElementById("jar").value;
-      let wax = jar * 0.92;
-      let fragrance = jar * 0.08;
+      let vessel = parseFloat(document.getElementById("vessel").value);
+      let count = parseFloat(document.getElementById("count").value);
+      let load = parseFloat(document.getElementById("load").value);
 
-      document.getElementById("result").innerText =
-        "Wax: " + wax.toFixed(2) + " oz | Fragrance: " + fragrance.toFixed(2) + " oz";
+      if (!vessel || !count || !load) {
+        alert("Fill everything out");
+        return;
+      }
+
+      let total = vessel * count;
+      let fragrance = total * (load / 100);
+      let wax = total - fragrance;
+
+      let label = "";
+      if (load == 6) label = "Light";
+      if (load == 8) label = "Medium";
+      if (load == 10) label = "Strong";
+      if (load == 12) label = "Overload (Wax Melts)";
+
+      let warning = "";
+      if (load == 12) {
+        warning = "<p style='color:#d4a75c;'>High load for wax melts only</p>";
+      }
+
+      let box = document.getElementById("results");
+      box.style.display = "block";
+
+      box.innerHTML = `
+        <p><b>Strength:</b> ${label} (${load}%)</p>
+        <p><b>Total Fill:</b> ${total.toFixed(2)} oz</p>
+        <p><b>Wax Needed:</b> ${wax.toFixed(2)} oz</p>
+        <p><b>Fragrance Needed:</b> ${fragrance.toFixed(2)} oz</p>
+        ${warning}
+      `;
     }
   </script>
 </body>
